@@ -337,6 +337,28 @@ METHODS
     
     !!!! This object is only available after the render method !!!!
 
+  $graph->reduce(        data  => \@dot1,
+        start => 50,
+        end   => 360,
+        init  => 300 );
+    This method allow to create a set of data directly usable a a data_set.
+    If there are more plotting value in the input data then the size of the
+    graph, use some average to create the plotting dot If there are lower
+    plotting value in the input data then the size of the graph, fill the
+    gap to smooth the graph data = an array ref with the input data start =
+    where the data start in the reduced data ( if missing =0 ) end = where
+    the data end in the reduced data ( f missing = end of the active size
+    graph ) init = a default value to set the element when there is no data
+    to add, like before start or after end ( if missing use undef )
+
+    return a array of 2 element
+
+    The first one contains an array refwith the reduced set of data The
+    second a hash ref with the statistic info
+
+    $VAR1 = { 'perc' => 345, 'last_val' => 359, 'avg' => '400', 'min' => 0,
+    'last' => 360, 'max' => 800, 'sum' => 320400 };
+
   $graph->render
     create the SVG from all the objects
 

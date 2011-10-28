@@ -1,13 +1,13 @@
-package Layer;
+package  Graph::ChartSVG::Layer;
 use Moose;
 
-has 'data'    => ( isa => 'Data',    is => 'rw', required => 0 );
-has 'glyph'   => ( isa => 'Glyph',   is => 'rw', required => 0 );
-has 'overlay' => ( isa => 'Overlay', is => 'rw', required => 0 );
+has 'data'    => ( isa => 'Graph::ChartSVG::Data',    is => 'rw', required => 0 );
+has 'glyph'   => ( isa => 'Graph::ChartSVG::Glyph',   is => 'rw', required => 0 );
+has 'overlay' => ( isa => 'Graph::ChartSVG::Overlay', is => 'rw', required => 0 );
 
 1;
 
-package Data;
+package  Graph::ChartSVG::Data;
 use Moose;
 
 has 'data_set'  => ( isa => 'ArrayRef',       is => 'rw', required => 0 );
@@ -23,7 +23,7 @@ has 'scale'     => ( isa => 'Num | ArrayRef', is => 'rw', required => 0, default
 
 1;
 
-package Frame;
+package Graph::ChartSVG::Frame;
 use Moose;
 
 has 'type'      => ( isa => 'Str', is => 'rw', required => 0, default => 'line' );
@@ -32,7 +32,7 @@ has 'color'     => ( isa => 'Str', is => 'rw', required => 0, default => '000000
 
 1;
 
-package Glyph;
+package  Graph::ChartSVG::Glyph;
 use Moose;
 
 has 'x'    => ( isa => 'Str', is => 'rw', required => 1, default => 0 );
@@ -53,7 +53,7 @@ has 'label'          => ( isa => 'Str', is => 'rw', required => 0 );
 
 1;
 
-package Border;
+package  Graph::ChartSVG::Border;
 use Moose;
 
 has 'left'   => ( isa => 'Num', is => 'rw', required => 0, default => 0 );
@@ -63,7 +63,7 @@ has 'bottom' => ( isa => 'Num', is => 'rw', required => 0, default => 0 );
 
 1;
 
-package Label;
+package  Graph::ChartSVG::Label;
 use Moose;
 
 has 'color' => ( isa => 'Str', is => 'rw', required => 0, default => '00000000' );
@@ -79,31 +79,31 @@ has 'kerning_correction' => ( isa => 'Num', is => 'rw', required => 0, default =
 
 1;
 
-package Grid_def;
+package  Graph::ChartSVG::Grid_def;
 use Moose;
 
 has 'color' => ( isa => 'Str', is => 'rw', required => 0, default => '00000000' );
 has 'number'    => ( isa => 'Num',   is => 'rw', required => 1 );
 has 'thickness' => ( isa => 'Num',   is => 'rw', required => 0, default => 1 );
-has 'label'     => ( isa => 'Label', is => 'rw', required => 0 );
-has 'label2'    => ( isa => 'Label', is => 'rw', required => 0 );
+has 'label'     => ( isa => 'Graph::ChartSVG::Label', is => 'rw', required => 0 );
+has 'label2'    => ( isa => 'Graph::ChartSVG::Label', is => 'rw', required => 0 );
 
 1;
 
-package Grid;
+package  Graph::ChartSVG::Grid;
 use Moose;
 
-has 'x'      => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'y'      => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'y_up'   => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'y_down' => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'x_up'   => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'x_down' => ( isa => 'Grid_def', is => 'rw', required => 0 );
-has 'debord' => ( isa => 'Border',   is => 'rw', required => 0, default => sub { Border->new } );
+has 'x'      => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'y'      => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'y_up'   => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'y_down' => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'x_up'   => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'x_down' => ( isa => 'Graph::ChartSVG::Grid_def', is => 'rw', required => 0 );
+has 'debord' => ( isa => 'Graph::ChartSVG::Border',   is => 'rw', required => 0, default => sub { Graph::ChartSVG::Border->new } );
 
 1;
 
-package Overlay;
+package  Graph::ChartSVG::Overlay;
 use Moose;
 
 has 'type'     => ( isa => 'Str', is => 'rw', required => 0, default => 'v' );
@@ -115,8 +115,8 @@ has 'color' => ( isa => 'Str', is => 'rw', required => 0, default => '00000000' 
 1;
 
 package Graph::ChartSVG;
-
 use Moose;
+
 use constant PI => 4 * atan2( 1, 1 );
 
 use SVG;
@@ -138,21 +138,21 @@ use MIME::Base64;
 
 use vars qw( $VERSION );
 
-$VERSION = '2.05';
+$VERSION = '2.06';
 
 has 'active_size' => ( isa => 'ArrayRef', is => 'rw', required => 0 );
 has 'total_size'  => ( isa => 'ArrayRef', is => 'rw', required => 0 );
 has 'bg_color'    => ( isa => 'Str',      is => 'rw', required => 0, default => 'ffffffff' );
-has 'frame'       => ( isa => 'Frame',    is => 'rw', required => 0, default => sub { Frame->new } );
-has 'grid'        => ( isa => 'Grid',     is => 'rw', required => 0 );
+has 'frame'       => ( isa => 'Graph::ChartSVG::Frame',    is => 'rw', required => 0, default => sub { Graph::ChartSVG::Frame->new } );
+has 'grid'        => ( isa => 'Graph::ChartSVG::Grid',     is => 'rw', required => 0 );
 #has 'reticle'     => ( isa => 'HashRef',  is => 'rw', required => 0 );
-has 'overlay' => ( isa => 'Overlay',  is => 'rw', required => 0 );
+has 'overlay' => ( isa => 'Graph::ChartSVG::Overlay',  is => 'rw', required => 0 );
 has 'glyph'   => ( isa => 'ArrayRef', is => 'rw', required => 0 );
 #has 'layer'    => ( isa => 'ArrayRef', is => 'rw' ,default => sub { [ Layer->new]} );
 has 'layer'   => ( isa => 'ArrayRef[Layer]', is => 'rw' );
 has 'image'   => ( isa => 'Str',             is => 'rw' );
 has 'svg_raw' => ( isa => 'Str',             is => 'rw' );
-has 'border'  => ( isa => 'Border',          is => 'rw', required => 0, default => sub { Border->new } );
+has 'border'  => ( isa => 'Graph::ChartSVG::Border',          is => 'rw', required => 0, default => sub { Graph::ChartSVG::Border->new } );
 has 'tag' => ( isa => 'Bool', is => 'rw', required => 0 );
 #has 'tag' => ( isa => 'Tag', is => 'rw', required => 0 );
 #has 'tag' =>  ( isa => 'HashRef', is => 'rw', required => 0 );
@@ -298,7 +298,7 @@ sub render
     {
         my $layer_goup;
         push @list_data, "data_$layer_ind";
-        if ( ( ref $layer ) eq 'Data' )
+        if ( ( ref $layer ) eq 'Graph::ChartSVG::Data' )
         {
             if ( defined $layer->{ data_set } )
             {
@@ -510,7 +510,7 @@ sub render
 #######################################
 ################ Glyph ################
 #######################################
-        if ( ( ref $layer ) eq 'Glyph' )
+        if ( ( ref $layer ) eq 'Graph::ChartSVG::Glyph' )
         {
             $layer_goup = $data_goup->group( id => "data_$layer_ind" );
             my $X = 0;
@@ -756,7 +756,7 @@ sub render
 #######################################
 ############## Overlay ################
 #######################################
-        if ( ( ref $layer ) eq 'Overlay' )
+        if ( ( ref $layer ) eq 'Graph::ChartSVG::Overlay' )
         {
             $layer_goup = $data_goup->group( id => "data_$layer_ind" );
             my $ind       = 0;
@@ -1994,6 +1994,41 @@ return the SVG image ( to be writed in a file )
     close $IMG;
     
 !!!!    This object is only available after the render method !!!!
+
+=over 
+
+=back
+
+=head2 $graph->reduce(        data  => \@dot1,
+        start => 50,
+        end   => 360,
+        init  => 300 );
+        
+This method allow to create a set of data directly usable a a data_set.
+If there are more plotting value in the input data then the size of the graph, use some average to create the plotting dot
+If there are lower plotting value in the input data then the size of the graph, fill the gap to smooth the graph
+data = an array ref with the input data        
+start =  where the data start in the reduced data ( if missing =0 )
+end = where the data end in the reduced data ( f missing = end of the active size graph )
+init = a default value to set the element when there is no data to add, like before start or after end ( if missing use undef )
+
+
+return a array of 2  element 
+
+The first one contains an array refwith the reduced set of data
+The second a hash ref with the statistic info
+
+$VAR1 = {
+          'perc' => 345,
+          'last_val' => 359,
+          'avg' => '400',
+          'min' => 0,
+          'last' => 360,
+          'max' => 800,
+          'sum' => 320400
+        };
+
+
 
 =over 
 

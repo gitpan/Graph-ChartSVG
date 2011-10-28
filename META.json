@@ -35,43 +35,43 @@
       }
    },
    "provides" : {
-      "Border" : {
-         "file" : "lib/Graph/ChartSVG.pm",
-         "version" : 0
-      },
-      "Data" : {
-         "file" : "lib/Graph/ChartSVG.pm",
-         "version" : 0
-      },
-      "Frame" : {
-         "file" : "lib/Graph/ChartSVG.pm",
-         "version" : 0
-      },
-      "Glyph" : {
-         "file" : "lib/Graph/ChartSVG.pm",
-         "version" : 0
-      },
       "Graph::ChartSVG" : {
          "file" : "lib/Graph/ChartSVG.pm",
-         "version" : "2.05"
+         "version" : "2.06"
       },
-      "Grid" : {
+      "Graph::ChartSVG::Border" : {
          "file" : "lib/Graph/ChartSVG.pm",
          "version" : 0
       },
-      "Grid_def" : {
+      "Graph::ChartSVG::Data" : {
          "file" : "lib/Graph/ChartSVG.pm",
          "version" : 0
       },
-      "Label" : {
+      "Graph::ChartSVG::Frame" : {
          "file" : "lib/Graph/ChartSVG.pm",
          "version" : 0
       },
-      "Layer" : {
+      "Graph::ChartSVG::Glyph" : {
          "file" : "lib/Graph/ChartSVG.pm",
          "version" : 0
       },
-      "Overlay" : {
+      "Graph::ChartSVG::Grid" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Graph::ChartSVG::Grid_def" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Graph::ChartSVG::Label" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Graph::ChartSVG::Layer" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Graph::ChartSVG::Overlay" : {
          "file" : "lib/Graph/ChartSVG.pm",
          "version" : 0
       }
@@ -82,5 +82,5 @@
          "http://www.gnu.org/licenses/old-licenses/gpl-1.0.txt"
       ]
    },
-   "version" : "2.05"
+   "version" : "2.06"
 }
