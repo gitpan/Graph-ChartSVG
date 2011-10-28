@@ -1,0 +1,86 @@
+{
+   "abstract" : "Wraper arround SVG to graph chart",
+   "author" : [
+      "DULAUNOY Fabrice <fabrice at dulaunoy dot com>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.112150",
+   "license" : [
+      "open_source"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Graph-ChartSVG",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.38"
+         }
+      },
+      "runtime" : {
+         "recommends" : {
+            "Data::Dumper" : 0,
+            "Data::Serializer" : 0
+         },
+         "requires" : {
+            "Hash::Merge" : 0,
+            "List::Util" : 0,
+            "Moose" : 0,
+            "SVG" : 0,
+            "SVG::Parser" : 0,
+            "perl" : "5.005_03"
+         }
+      }
+   },
+   "provides" : {
+      "Border" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Data" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Frame" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Glyph" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Graph::ChartSVG" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : "2.05"
+      },
+      "Grid" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Grid_def" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Label" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Layer" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      },
+      "Overlay" : {
+         "file" : "lib/Graph/ChartSVG.pm",
+         "version" : 0
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://www.gnu.org/licenses/old-licenses/gpl-1.0.txt"
+      ]
+   },
+   "version" : "2.05"
+}
